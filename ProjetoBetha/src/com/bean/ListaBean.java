@@ -42,13 +42,8 @@ public class ListaBean implements Serializable {
 	
 	public List<Item> getListaItens() {
 		this.lidos = new DAO<Item>(Item.class).listaTodos();
-		//removeItems(lidos, this.lista.getItens());
 		return lidos;
 	}
-
-//	public Listener alteraLista(){
-//		
-//	}
 	
 	public List<Item> getListaItensGravados() {
 		return this.lista.getItens();
