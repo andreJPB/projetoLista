@@ -1,0 +1,21 @@
+<ui:composition template="template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Cadastro Lista</ui:define>
+	<ui:define name="conteudo">
+		<h:body>
+			<h:form>
+				<p:messages id="messages" autoUpdate="true"/>
+				<fieldset>
+				<legend>Lista</legend>
+					<h:outputLabel value="Nome:" for="lista" />
+					<p:inputText value="#{listaBean.lista.nome}" id="lista" 
+					required="true" requiredMessage="Campo Obrigatorio"/>
+					<h:commandButton value="gravar" action="#{listaBean.grava}" />
+				</fieldset>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

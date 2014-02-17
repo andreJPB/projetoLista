@@ -1,0 +1,33 @@
+<ui:composition template="template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="titulo">Lista de itens</ui:define>
+	<ui:define name="conteudo">
+		<h:body>
+			<h:form>
+
+				<p:dataTable value="#{itemBean.listaItens}" var="lista">
+					<p:column>
+						<h:outputText value="#{lista.id}" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{lista.descricao}" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{lista.preco}" />
+					</p:column>
+					<p:column>
+						<h:commandLink value="editar" />
+					</p:column>
+					<p:column>
+						<h:commandLink value="remover" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

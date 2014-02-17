@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head />
+<h:body>
+
+	<div id="cabecalho">
+		<h:form>
+			<p:menubar>
+				<p:submenu label="Cadastros">
+					<p:menuitem value="Item" action="item" />
+					<p:menuitem value="Lista" action="cria-lista" />
+				</p:submenu>
+
+				<p:submenu label="Listas" >
+					<p:menuitem value="Item"  action="lista-de-itens"/>
+					<p:menuitem value="Lista" action="lista-de-listas" />
+				</p:submenu>
+			
+			</p:menubar>
+		</h:form>
+		<h1>
+			<ui:insert name="titulo"></ui:insert>
+		</h1>
+	</div>
+	<ui:insert name="conteudo">
+
+	</ui:insert>
+
+	<div id="fooder" style="text-align: center" class="container">
+		<hr />
+		Desenvolvido por Andre Juliano.
+	</div>
+</h:body>
+</html>

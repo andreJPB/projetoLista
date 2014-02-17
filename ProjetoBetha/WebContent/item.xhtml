@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+
+
+	<ui:define name="titulo">Cadastro de Itens</ui:define>
+	<ui:define name="conteudo">
+		<h:head />
+		<h:body>
+			<h:form>
+				<p:messages id="messages" autoUpdate="true" />
+				<fieldset>
+					<legend>Dados do Item</legend>
+					<h:panelGrid columns="2">
+						<p:outputLabel value="Descricao:" for="descricao" />
+						<p:inputText id="descricao" value="#{itemBean.item.descricao}"
+							required="true" requiredMessage="Descricao nao pode estar vazio">
+							<f:ajax event="blur" render="messages" />
+						</p:inputText>
+						<p:outputLabel value="Preco:" for="preco" />
+						<p:inputText id="preco" value="#{itemBean.item.preco}" />
+						<h:commandButton value="SALVAR" action="#{itemBean.grava}">
+						</h:commandButton>
+
+					</h:panelGrid>
+				</fieldset>
+				<p:dataTable value="#{itemBean.listaItens}" var="item">
+					<p:column>
+						<f:facet name="header">Descrição</f:facet>
+						<h:outputText value="#{item.descricao}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Preço</f:facet>
+						<h:outputText value="#{item.preco}">
+							<f:convertNumber type="currency" currencySymbol="R$"
+								locale="pt_BR" pattern="R$ #0.00"></f:convertNumber>
+						</h:outputText>
+					</p:column>
+
+					<p:column>
+						<h:commandLink value="editar" />
+					</p:column>
+
+					<p:column>
+						<h:commandLink value="remover" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

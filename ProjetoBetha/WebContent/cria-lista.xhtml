@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+
+	<ui:define name="titulo">Cadastro Itens na lista</ui:define>
+	<ui:define name="conteudo">
+
+		<h:body>
+			<h:form>
+				<p:messages id="messages" />
+<!-- 				<fieldset> -->
+<!-- 					<legend>Lista</legend> -->
+<!-- 					<h:outputLabel value="Nome:" for="lista" /> -->
+<!-- 					<h:inputText value="#{listaBean.lista.nome}" id="lista" -->
+<!-- 						required="true" requiredMessage="Campo Obrigatorio"> -->
+<!-- 						<f:ajax event="blur" render="messages" /> -->
+<!-- 					</h:inputText> -->
+<!-- 				</fieldset> -->
+
+				<fieldset >
+					<legend>Lista</legend>
+					<h:selectOneMenu id="lista" value="#{listaBean.idLista}" valueChangeListener="#{listaBean.alteraLista}" onchange="submit()">
+						<f:selectItems value="#{listaBean.listas}" var="lista"
+							itemLabel="#{lista.nome}" itemValue="#{lista.id}" />
+					</h:selectOneMenu>
+					<h:commandLink value="Cadastrar lista" action="lista"/>
+				</fieldset>
+
+				<fieldset>
+					<legend>Dados do Item</legend>
+					<h:outputLabel value="Selecione um item:" for="oneMenu" />
+
+					<h:selectOneMenu id="oneMenu" value="#{listaBean.idItem}">
+						<f:selectItems value="#{listaBean.listaItens}" var="item"
+							itemLabel="#{item.descricao}" itemValue="#{item.id}" />
+					</h:selectOneMenu>
+					<h:commandButton value="Adicionar Item"
+						actionListener="#{listaBean.gravaItem}" />
+				</fieldset>
+				<fieldset>
+					<p:dataTable value="#{listaBean.listaItensGravados}"
+						var="itensDaLista">
+						<p:column>
+							<f:facet name="header">Descrição</f:facet>
+							<h:outputLabel value="#{itensDaLista.descricao}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">Preço</f:facet>
+							<h:outputLabel value="#{itensDaLista.preco}">
+								<f:convertNumber type="currency" currencySymbol="R$"
+									locale="pt_BR" pattern="R$ #0.00"></f:convertNumber>
+							</h:outputLabel>
+
+						</p:column>
+					</p:dataTable>
+					<br />
+					<hr />
+					<h:outputLabel value="#{listaBean.total}" >
+						<f:convertNumber type="currency" currencySymbol="R$"
+							locale="pt_BR" pattern="R$ #0.00"></f:convertNumber>
+						
+					</h:outputLabel>
+				</fieldset>
+				<h:commandButton value="gravar" action="#{listaBean.gravaLista}" />
+			</h:form>
+		</h:body>
+
+	</ui:define>
+</ui:composition>
+
+</html>
