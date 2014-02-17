@@ -14,23 +14,23 @@
 		<h:body>
 			<h:form>
 				<p:messages id="messages" />
-<!-- 				<fieldset> -->
-<!-- 					<legend>Lista</legend> -->
-<!-- 					<h:outputLabel value="Nome:" for="lista" /> -->
-<!-- 					<h:inputText value="#{listaBean.lista.nome}" id="lista" -->
-<!-- 						required="true" requiredMessage="Campo Obrigatorio"> -->
-<!-- 						<f:ajax event="blur" render="messages" /> -->
-<!-- 					</h:inputText> -->
-<!-- 				</fieldset> -->
-
-				<fieldset >
+				<fieldset>
 					<legend>Lista</legend>
-					<h:selectOneMenu id="lista" value="#{listaBean.idLista}" valueChangeListener="#{listaBean.alteraLista}" onchange="submit()">
-						<f:selectItems value="#{listaBean.listas}" var="lista"
-							itemLabel="#{lista.nome}" itemValue="#{lista.id}" />
-					</h:selectOneMenu>
-					<h:commandLink value="Cadastrar lista" action="lista"/>
+					<h:outputLabel value="Nome:" for="lista" />
+					<h:inputText value="#{listaBean.lista.nome}" id="lista"
+						required="true" requiredMessage="Campo Obrigatorio">
+						<f:ajax event="blur" render="messages" />
+					</h:inputText>
 				</fieldset>
+
+<!-- 				<fieldset > -->
+<!-- 					<legend>Lista</legend> -->
+<!-- 					<h:selectOneMenu id="lista" value="#{listaBean.idLista}" valueChangeListener="#{listaBean.alteraLista}" onchange="submit()"> -->
+<!-- 						<f:selectItems value="#{listaBean.listas}" var="lista" -->
+<!-- 							itemLabel="#{lista.nome}" itemValue="#{lista.id}" /> -->
+<!-- 					</h:selectOneMenu> -->
+<!-- 					<h:commandLink value="Cadastrar lista" action="lista"/> -->
+<!-- 				</fieldset> -->
 
 				<fieldset>
 					<legend>Dados do Item</legend>
